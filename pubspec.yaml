@@ -1,0 +1,19 @@
+name: flutter_notes_app
+description: "A new Flutter project."
+
+environment:
+  sdk: '>=2.18.0 <3.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  get_it: ^7.2.0
+  flutter_bloc: ^8.1.2
+  equatable: ^2.0.3
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+flutter:
+  uses-material-design: true
