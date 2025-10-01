@@ -8,3 +8,13 @@ abstract class NoteListEvent extends Equatable {
 }
 
 class LoadNotesEvent extends NoteListEvent {}
+
+class CreateNewNodeEvent extends NoteListEvent {
+  final String title;
+  final String content;
+
+  const CreateNewNodeEvent({required this.title, required this.content});
+
+  @override
+  List<Object?> get props => [title, content];
+}

@@ -1,3 +1,4 @@
+import 'package:flutter_notes_app/core/device_info/services/device_info.dart';
 import 'package:get_it/get_it.dart';
 
 import '../data/datasources/note_local_datasource.dart';
@@ -10,8 +11,12 @@ import '../presentation/features/list/bloc/note_list_bloc.dart';
 final GetIt sl = GetIt.instance;
 
 void init() {
+  // Services
+  sl.registerLazySingleton<DeviceInfo>(() => DeviceInfo.instance);
+
   // Data sources
-  sl.registerLazySingleton<NoteLocalDataSource>(() => NoteLocalDataSourceImpl());
+  sl.registerLazySingleton<NoteLocalDataSource>(
+      () => NoteLocalDataSourceImpl());
 
   // Repositories
   sl.registerLazySingleton<NoteRepository>(
@@ -27,5 +32,6 @@ void init() {
   );
 
   // Blocs
-  sl.registerFactory(() => NoteListBloc(getNotes: sl()));
+  sl.registerFactory(() => NoteListBloc(
+      getNotes: sl(), createNewNoteUseCase: sl(), deviceInfo: sl()));
 }

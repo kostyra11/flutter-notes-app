@@ -20,6 +20,8 @@ class NotesListPage extends StatelessWidget {
         ),
         body: BlocBuilder<NoteListBloc, NoteListState>(
           builder: (context, state) {
+            // Text("Battery level: ${} ");
+
             if (state is NoteListLoading) {
               return const Center(child: CircularProgressIndicator());
             } else if (state is NoteListLoaded) {

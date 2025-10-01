@@ -22,6 +22,15 @@ class NoteListLoaded extends NoteListState {
   List<Object?> get props => [notes];
 }
 
+class NoteListNewNote extends NoteListState {
+  final Note note;
+
+  const NoteListNewNote(this.note);
+
+  @override
+  List<Object?> get props => [note];
+}
+
 class NoteListError extends NoteListState {
   final String message;
 
@@ -29,4 +38,13 @@ class NoteListError extends NoteListState {
 
   @override
   List<Object?> get props => [message];
+}
+
+class NoteBatteryLevelState extends NoteListState {
+  final String batteryLevelState;
+
+  const NoteBatteryLevelState(this.batteryLevelState);
+
+  @override
+  List<Object?> get props => [batteryLevelState];
 }
