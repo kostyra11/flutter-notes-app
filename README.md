@@ -1,16 +1,9 @@
 # flutter_notes_app
 
-A new Flutter project.
+TASKS:
 
-## Getting Started
+1. Add business logic to create note page. After "Save" note should be added to main notes list and page should be closed.
 
-This project is a starting point for a Flutter application.
+2. Add to note domain "battery percentage" field. Fetch battery percentage using native code. Add check box on create note page "Include battery percentage". Add logic to show battery percentage in main list of notes.
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+3. On notes list page add "Shuffle" button. It should shuffle notes in random order.
