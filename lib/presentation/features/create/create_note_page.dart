@@ -32,42 +32,43 @@ class _CreateNotePageState extends State<CreateNotePage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Create Note'),
-      ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            TextField(
-              controller: titleControllet,
-              decoration: const InputDecoration(labelText: 'Title'),
-            ),
-            const SizedBox(height: 16),
-            TextField(
-              controller: contentControllet,
-              decoration: const InputDecoration(labelText: 'Content'),
-              maxLines: 4,
-            ),
-            const SizedBox(height: 24),
-            BlocProvider(
-              create: (_) => sl<NoteListBloc>(),
-              child: ElevatedButton(
-                onPressed: () {
-                  sl<NoteListBloc>().add(CreateNewNodeEvent(
-                    title: titleControllet.text,
-                    content: contentControllet.text,
-                  ));
-                  sl<NoteListBloc>().add(LoadNotesEvent());
-
-                  Navigator.of(context).pop();
-                },
-                child: const Text('Save'),
+    return BlocProvider(
+      create: (_) => sl<NoteListBloc>(),
+      child: Scaffold(
+        appBar: AppBar(
+          title: const Text('Create Note'),
+        ),
+        body: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              TextField(
+                controller: titleControllet,
+                decoration: const InputDecoration(labelText: 'Title'),
               ),
-            ),
-          ],
+              const SizedBox(height: 16),
+              TextField(
+                controller: contentControllet,
+                decoration: const InputDecoration(labelText: 'Content'),
+                maxLines: 4,
+              ),
+              const SizedBox(height: 24),
+              Builder(
+                builder: (context) => ElevatedButton(
+                  onPressed: () {
+                    context.read<NoteListBloc>().add(CreateNewNodeEvent(
+                          title: titleControllet.text,
+                          content: contentControllet.text,
+                        ));
+
+                    Navigator.of(context).pop();
+                  },
+                  child: const Text('Save'),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );

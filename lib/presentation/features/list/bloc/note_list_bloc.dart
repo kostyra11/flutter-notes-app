@@ -42,6 +42,9 @@ class NoteListBloc extends Bloc<NoteListEvent, NoteListState> {
       batteryLevel = await deviceInfo.getBatteryLevel();
 
       emit(NoteListNewNote(note));
+
+      final notes = await getNotes();
+      emit(NoteListLoaded(notes));
     } catch (e) {
       emit(NoteListError(e.toString()));
     }

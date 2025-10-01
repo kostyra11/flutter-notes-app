@@ -40,6 +40,9 @@ class NotesListPage extends StatelessWidget {
                 },
                 separatorBuilder: (_, __) => const Divider(height: 0.5),
               );
+            } else if (state is NoteListNewNote) {
+              context.read<NoteListBloc>().add(LoadNotesEvent());
+              return const Center(child: CircularProgressIndicator());
             } else if (state is NoteListError) {
               return Center(child: Text(state.message));
             }
@@ -52,6 +55,7 @@ class NotesListPage extends StatelessWidget {
               await Navigator.of(context).push(
                 MaterialPageRoute(builder: (_) => const CreateNotePage()),
               );
+              context.read<NoteListBloc>().add(LoadNotesEvent());
             },
             child: const Icon(Icons.add),
           ),
