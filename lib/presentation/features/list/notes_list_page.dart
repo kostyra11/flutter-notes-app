@@ -16,12 +16,10 @@ class NotesListPage extends StatelessWidget {
       create: (_) => sl<NoteListBloc>()..add(LoadNotesEvent()),
       child: Scaffold(
         appBar: AppBar(
-          title: const Text('Notes'),
+          title: const Text('Notes, Battery level: '),
         ),
         body: BlocBuilder<NoteListBloc, NoteListState>(
           builder: (context, state) {
-            // Text("Battery level: ${} ");
-
             if (state is NoteListLoading) {
               return const Center(child: CircularProgressIndicator());
             } else if (state is NoteListLoaded) {
